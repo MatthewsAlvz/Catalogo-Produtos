@@ -6,7 +6,11 @@ import { AlertController } from '@ionic/angular';
 })
 export class UrlService {
 
-  url: string = "http://localhost/catalogo/Catalogo/php/";
+  // Server Web Online:
+  url: string = "https://catalogomatheus.000webhostapp.com/php/";
+
+  // Server Localhost:
+//  url: String = "http://localhost/catalogo/Catalogo/php/";
 
   constructor(public alert: AlertController) {}
 

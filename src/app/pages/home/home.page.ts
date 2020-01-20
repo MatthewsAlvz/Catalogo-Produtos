@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
 import { UrlService } from '../../provider/url.service';
+import { NavController, NavParams } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,10 @@ export class HomePage {
 
   produtos: any;
 
-  constructor(public http: Http, public serviceUrl: UrlService) {
+  constructor(public http: Http, 
+              public serviceUrl: UrlService,
+              public nav: NavController,
+              private route: Router) {
 
     this.listProdutos();
   }
@@ -27,4 +32,13 @@ export class HomePage {
     );
   }
 
+
+  toProdutos(){
+    this.nav.navigateForward('/cadastro_produtos')
+  }
+
+  //go(id){
+ //   console.log(id);
+ //   this.navigateByUrl('/list_produtos/id');
+  //}
 }

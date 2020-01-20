@@ -1,15 +1,11 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header('Content-Type: text/html; charset=utf-8');
-$host = "mysql:host=localhost;dbname=db_catalago";
-$usuario = "root";
-$senha = "";
+
 
     if ( isset($_GET["email"]) || isset($_GET["senha"]) ){
 
         if ( !empty($_GET["email"]) || !empty($_GET["senha"]) ){
 
-            $conexao = new PDO($host, $usuario, $senha);
+           require 'config.php';
 
             $email = $_GET["email"];
             $senha = $_GET["senha"];

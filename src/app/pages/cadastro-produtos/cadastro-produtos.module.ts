@@ -1,19 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CadastroProdutosPageRoutingModule } from './cadastro-produtos-routing.module';
-
 import { CadastroProdutosPage } from './cadastro-produtos.page';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: CadastroProdutosPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
-    CadastroProdutosPageRoutingModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [CadastroProdutosPage]
 })

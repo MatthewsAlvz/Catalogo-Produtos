@@ -1,12 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header('Content-Type: text/html; charset=utf-8');
-$host = "mysql:host=localhost;dbname=db_catalago";
-$usuario = "root";
-$senha = "";
 
 try{
-    $conexao = new PDO($host, $usuario, $senha);
+    require 'config.php';
 
     if(!$conexao){
         echo "Não foi possivel se conectar ao banco de Dados!";
