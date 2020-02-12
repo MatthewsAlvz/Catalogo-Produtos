@@ -3,6 +3,7 @@ import { AlertController, NavController, LoadingController } from '@ionic/angula
 import { UrlService } from 'src/app/provider/url.service';
 import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
+import { ServiceUserService } from '../../provider/service-user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
               public urlService: UrlService, 
               public http: Http, 
               public nav: NavController,
-              public loading: LoadingController) { 
+              public loading: LoadingController,
+              public serviceUser: ServiceUserService) { 
 
                 // --------------- MOCADO ----------- //
                 this.email = "admin@admin.com";
@@ -53,6 +55,12 @@ export class LoginPage implements OnInit {
             if (data.msg.logado == "sim") {
 
               if (data.dados.status == "ativo") {
+                this.serviceUser.setUserID(data.dados.idusuario);
+                this.serviceUser.setuserName(data.dados.nome);
+                this.serviceUser.setUserFoto(data.dados.foto);
+                this.serviceUser.setUserNivel(data.dados.nivel);
+          
+                localStorage.setItem('user_logado', data);
 
                 load.dismiss();
                 this.nav.navigateBack('home');

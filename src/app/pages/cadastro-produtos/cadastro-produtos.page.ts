@@ -4,6 +4,7 @@ import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { UrlService } from '../../provider/url.service';
 import { NavController } from '@ionic/angular';
+import { ServiceUserService } from '../../provider/service-user.service';
 
 @Component({
   selector: 'app-cadastro-produtos',
@@ -18,14 +19,17 @@ export class CadastroProdutosPage implements OnInit {
   valor: any;
   qtd: any;
   descricao: any;
+  idusuario: any;
 
   constructor(public navCtrl: NavController,
               public formBuilder: FormBuilder,
               public http: Http,
-              public urlService: UrlService
+              public urlService: UrlService,
+              public serviceUser: ServiceUserService
   ) { 
 
     this.postagem = this.formBuilder.group({
+      idusuario: [this.serviceUser.getUserID(), Validators.required],
       nome: ['', Validators.required],
       valor: ['', Validators.required],
       qtd: ['', Validators.required],

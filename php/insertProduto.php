@@ -13,7 +13,7 @@ $qtd = $objData->qtd;
 $valor = $objData->valor;
 $descricao = $objData->descricao;
 //$idempresa = $objData->idempresa;
-//$idusuario = $objData->idusuario;
+$idusuario = $objData->idusuario;
 
 $nome = stripslashes($nome);
 $qtd = stripslashes($qtd);
@@ -22,7 +22,7 @@ $valor = stripslashes($valor);
 $descricao = stripslashes($descricao);
 //$status = stripslashes($status);
 //$idempresa = stripslashes($idempresa);
-//$idusuario = stripslashes($idusuario);
+$idusuario = stripslashes($idusuario);
 
 $nome = trim($nome);
 $qtd = trim($qtd);
@@ -30,7 +30,7 @@ $qtd = trim($qtd);
 $valor = trim($valor);
 $descricao = trim($descricao);
 //$idempresa = trim($idempresa);
-//$idusuario = trim($idusuario);
+$idusuario = trim($idusuario);
 
 $dados; 
 
@@ -38,17 +38,18 @@ require_once 'config.php';
 
 
 if($conexao){
-    $Sql = " insert into produto (nome_prod, quantidade_prod, desc_prod, foto_prod, valor_prod, status_prod) 
-    values('".$nome."','".$qtd."','".$descricao."','img_prods/esgotado.jpg','".$valor."', 'Ativo')";
+    $Sql = " insert into produto (nome_prod, quantidade_prod, desc_prod, foto_prod, valor_prod,
+     status_prod, usuario_id_user) values('".$nome."','".$qtd."','".$descricao."','img_prods/esgotado.jpg','".$valor."', 'Ativo', '".$idusuario."')";
 
 
+    printf($Sql);
     $query = $conexao->prepare($Sql);
     $query ->execute();
 
     echo 'dados inseridos com sucesso';
    
 }else{
-      $dados = array('mensagem' => "Não foi possivel in inserir os dados! Tente novamente mais tarde.");
+      $dados = array('mensagem' => "Não foi possivel inserir os dados! Tente novamente mais tarde.");
       echo json_encode($dados);
 };
 

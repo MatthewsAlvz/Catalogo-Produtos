@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -11,7 +11,16 @@
 
 <ion-content>
 
-  <ion-list *ngFor="let produto of produtos">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar color="danger" (ionInput)="getItems($event)" ></ion-searchbar>
+
+  <ion-list *ngFor="let produto of produtoItem">
+    
+    <a href="list_produtos/{{produto.codigo}}">
+
     <ion-card>
 
       <ion-card-header>
@@ -22,7 +31,7 @@
         <p> {{produto.descricao}} </p>
       </ion-card-content>
     </ion-card>
-
+    </a>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

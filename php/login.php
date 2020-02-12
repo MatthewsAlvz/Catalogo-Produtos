@@ -19,10 +19,11 @@
         if ($rs=$sql->fetch()) {
             if ($outp != "") { $outp .= ","; }
             
-            $outp .= '{"id_usuario":"'  . $rs["id_user"] . '",';
+            $outp .= '{"idusuario":"'  . $rs["id_user"] . '",';
             $outp .= '"nome":"'   . $rs["nome_user"]        . '",';
             $outp .= '"email":"'   . $rs["email_user"]        . '",';
             $outp .= '"senha":"'   . $rs["senha_user"]        . '",';
+            $outp .= '"foto":"'   . $rs["foto"]        . '",';
             $outp .= '"nivel":"'   . $rs["nivel_user"]        . '",';
             $outp .= '"data_cadastro_user":"'. $rs["data_cad_user"]        . '",';
             $outp .= '"status":"'   . $rs["status_user"]      . '"}';

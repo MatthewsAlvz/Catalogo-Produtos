@@ -3,19 +3,27 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
-          <ion-title>Menu</ion-title>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img [src]="urlService.getUrl()+serviceUser.getUserFoto()"></ion-img>
+            </ion-avatar>
+            <ion-label>{{serviceUser.getUserName()}}</ion-label>
+          </ion-item>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-menu-toggle auto-hide="false" *ngFor="let menu of menuService.perfilMenu">
+            <ion-item [routerDirection]="'root'" (click)="actionMenu(menu.acao)">
+              <ion-icon slot="start" [name]="menu.icone"></ion-icon>
               <ion-label>
-                {{p.title}}
+                {{menu.label}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-button  expand="full" color="danger" (click)="logout()">Sair</ion-button >
+
         </ion-list>
       </ion-content>
     </ion-menu>
